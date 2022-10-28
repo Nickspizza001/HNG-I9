@@ -3,7 +3,7 @@ from flask import Flask
 
 app = Flask(__name__)
 
-stringUsername = "Damilola"
+stringUsername = "Damibod"
 Boolean = True
 Integer = 21
 stringBio = "Ready to learn"
