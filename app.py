@@ -34,49 +34,50 @@ def hng2():
         requestAll = request.json
         requestX = requestAll['x']
         requestY = requestAll['y']
-        print(requestAll['operator_type'])
+        print(requestAll['operation_type'])
         
-        if requestAll['operator_type'] in operators:
-            if requestAll['operator_type'] == 'addition':
+        if requestAll['operation_type'] in operators:
+            if requestAll['operation_type'] == 'addition':
                 anwser = requestX + requestY
                 json_anwser = {
                     'slackUsername': 'Damibod',
-                    'results': anwser,
-                    'operation_type': requestAll['operator_type']
+                    'result': int(anwser),
+                    'operation_type': requestAll['operation_type']
                 }
                 return json_anwser
 
-            elif requestAll['operator_type'] == 'subtraction':
+            elif requestAll['operation_type'] == 'subtraction':
                 anwser = requestX - requestY
                 json_anwser = {
                     'slackUsername': 'Damibod',
-                    'results': anwser,
-                    'operation_type': requestAll['operator_type']
+                    'result': int(anwser),
+                    'operation_type': requestAll['operation_type']
                 }
                 return json_anwser
-            elif requestAll['operator_type'] == 'multiplication':
+            elif requestAll['operation_type'] == 'multiplication':
                 anwser = requestX * requestY
                 json_anwser = {
                     'slackUsername': 'Damibod',
-                    'results': anwser,
-                    'operation_type': requestAll['operator_type']
+                    'result': int(anwser),
+                    'operation_type': requestAll['operation_type']
+                    
                 }
                 return json_anwser
         else:
                       
-            result = do_openai(requestAll['operator_type'])
+            result = do_openai(requestAll['operation_type'])
             print(result)
             result = result['choices'][0]['text'].strip()
             json_anwser = {
                     'slackUsername': 'Damibod',
-                    'results': result,
-                    'operation_type': requestAll['operator_type']
-                }
+                    'result': int(result),
+                    'operation_type': requestAll['operation_type']           
+                      }
             return json_anwser
 
        
 
-        #return "Hello"
+        
         #use openai for the bonus
 
 if __name__ == "__main__":
